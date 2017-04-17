@@ -1,0 +1,29 @@
+env: prod
+
+clair: http://clair:6060
+clairHealth: http://clair:6061
+
+docker: unix:///var/run/docker.sock
+
+whitelistGroups: true
+groups:
+  - sevoma
+
+whitelistCommitters: true
+committers:
+  - sevoma@gmail.com
+
+registry: registry:5555
+
+gitServer: github.com
+gitPrivateKey: /run/secrets/git-private-key
+
+slackToken: /run/secrets/slack-token
+slackChannel: somechannel
+
+duoIntegrationKey: /run/secrets/duo-integration-key
+duoSecretKey: /run/secrets/duo-secret-key
+duoHost: /run/secrets/duo-host
+
+registryUser: /run/secrets/registry-password
+registryPassword: /run/secrets/registry-password
