@@ -19,7 +19,8 @@ import (
 	gitssh "gopkg.in/src-d/go-git.v4/plumbing/transport/ssh"
 
 	"github.com/inconshreveable/log15"
-	util "github.com/sevoma/goutil"
+	"github.com/sevoma/SeriousApiarist/util"
+	"github.com/sevoma/goutil"
 	"github.com/spf13/viper"
 
 	"goji.io/pat"
@@ -90,7 +91,7 @@ func NewTask(r *http.Request, fw FlushWriter) (Task, error) {
 		return task, errors.New("Invalid group param")
 	}
 	if viper.GetBool("whitelistGroups") {
-		if !util.StringInSlice(task.Group, viper.GetStringSlice("groups")) {
+		if !goutil.StringInSlice(task.Group, viper.GetStringSlice("groups")) {
 			return task, errors.New("Provided group not whitelisted")
 		}
 	}
@@ -131,7 +132,7 @@ func NewTask(r *http.Request, fw FlushWriter) (Task, error) {
 	task.ProjectPath = projectPath
 
 	if viper.GetBool("whitelistCommitters") &&
-		!util.StringInSlice(task.CommitterEmail,
+		!goutil.StringInSlice(task.CommitterEmail,
 			viper.GetStringSlice("committers")) {
 		return task, errors.New("You are not a whitelisted committer")
 	}

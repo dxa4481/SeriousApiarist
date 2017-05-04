@@ -34,7 +34,7 @@ vendors:
 - path: github.com/sergi/go-diff
   rev: feef008d51ad2b3778f85d387ccf91735543008d
 - path: github.com/sevoma/goutil
-  rev: 6842879b58823691b93b856b88d948ebb0cbdc3f
+  rev: f87c0e41dfe5b854505f996573478454ba9de5dc
 - path: github.com/spf13/afero
   rev: 9be650865eab0c12963d8753212f4f9c66cdcf12
 - path: github.com/spf13/cast
@@ -54,19 +54,19 @@ vendors:
 - path: goji.io
   rev: 0d89ff54b2c18c9c4ba530e32496aef902d3c6cd
 - path: golang.org/x/crypto
-  rev: 459e26527287adbc2adcc5d0d49abff9a5f315a7
+  rev: 04eae0b62feaaf659a0ce2c4e8dc70b6ae2fff67
 - path: golang.org/x/net
   rev: da118f7b8e5954f39d0d2130ab35d4bf0e3cb344
 - path: golang.org/x/sys
   rev: ea9bcade75cb975a0b9738936568ab388b845617
 - path: golang.org/x/text
-  rev: a9a820217f98f7c8a207ec1e45a874e1fe12c478
+  rev: 470f45bf29f4147d6fbd7dfd0a02a848e49f5bf4
 - path: gopkg.in/check.v1
   rev: 20d25e2804050c1cd24a7eea1e7a6447dd0e74ec
 - path: gopkg.in/src-d/go-billy.v2
   rev: 99d839800b93542496ec19319f37abacf17f589f
 - path: gopkg.in/src-d/go-git.v4
-  rev: d32489902e86c6b667bbc4d28558ebd40a80cf4a
+  rev: 36c78b9d1b1eea682703fb1cbb0f4f3144354389
 - path: gopkg.in/warnings.v0
   rev: 8a331561fe74dadba6edfc59f3be66c22c3b065d
 - path: gopkg.in/yaml.v2
