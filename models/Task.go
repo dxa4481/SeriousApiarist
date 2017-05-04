@@ -28,20 +28,21 @@ import (
 
 // Task - struct for task information
 type Task struct {
-	Group          string
-	Repo           string
-	Service        string
-	Test           string
-	Ref            string
-	Commit         string
-	Pipeline       string
-	CommitTime     time.Time
-	Committer      string
-	CommitterEmail string
-	ProjectPath    string
-	StartTime      time.Time
-	ImageName      string
-	ImageTag       string
+	Group                string
+	Repo                 string
+	Service              string
+	Test                 string
+	Ref                  string
+	Commit               string
+	Pipeline             string
+	CommitTime           time.Time
+	Committer            string
+	CommitterEmail       string
+	ProjectPath          string
+	StartTime            time.Time
+	ImageName            string
+	ImageTag             string
+	DockerfileFolderPath string
 }
 
 // NewTask - Checkout on the commit specified and returns task info object
@@ -136,6 +137,11 @@ func NewTask(r *http.Request, fw FlushWriter) (Task, error) {
 			viper.GetStringSlice("committers")) {
 		return task, errors.New("You are not a whitelisted committer")
 	}
+
+	// Using path.Join handles the service case nicely, which could be blank
+	// if a service is not provided. If service is blank, it's not included in
+	// the 'path'
+	task.DockerfileFolderPath = path.Join(task.ProjectPath, task.Service)
 
 	return task, nil
 }
