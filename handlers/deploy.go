@@ -9,14 +9,15 @@ import (
 	"path"
 
 	"github.com/sevoma/SeriousApiarist/models"
-	util "github.com/sevoma/goutil"
+	"github.com/sevoma/SeriousApiarist/util"
+	"github.com/sevoma/goutil"
 	"github.com/spf13/viper"
 )
 
 // Deploy endpoint enables stack deploys
 func Deploy(task *models.Task, fw models.FlushWriter, w http.ResponseWriter,
 	r *http.Request) *models.AppTrace {
-	handler := util.FuncName()
+	handler := goutil.FuncName()
 
 	stackFilePath := path.Join(task.ProjectPath, "docker-compose.yml")
 	_, err := os.Stat(stackFilePath)
@@ -27,12 +28,12 @@ func Deploy(task *models.Task, fw models.FlushWriter, w http.ResponseWriter,
 
 	//  docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $REGISTRY
 	io.WriteString(fw.W, "\n\nLogging into the registry\n\n")
-	registryUser, err := util.GetSecret("registryUser")
+	registryUser, err := goutil.GetSecret("registryUser")
 	if err != nil {
 		return &models.AppTrace{Handler: handler, Task: task, Error: err,
 			Message: "Error occured while fetching registry login secret", Code: 500}
 	}
-	registryPassword, err := util.GetSecret("registryPassword")
+	registryPassword, err := goutil.GetSecret("registryPassword")
 	if err != nil {
 		return &models.AppTrace{Handler: handler, Task: task, Error: err,
 			Message: "Error occured while fetching registry password secret", Code: 500}
